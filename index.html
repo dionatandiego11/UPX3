@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoEnergy - Aluguel de Equipamentos Fotovoltaicos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x600/22c55e/ffffff?text=Energia+Solar');
+            background-size: cover;
+            background-position: center;
+        }
+        .cta-button {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        .section-title {
+            border-bottom: 3px solid #22c55e; /* green-500 */
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        /* Custom modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 10% from the top and centered */
+            padding: 24px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 500px;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .modal-close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-close-button:hover,
+        .modal-close-button:focus {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-green-600">EcoEnergy</a>
+            <div class="space-x-4">
+                <a href="#home" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Início</a>
+                <a href="#planos" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Planos</a>
+                <a href="#simulador" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Simulador</a>
+                <a href="#contato" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+    
+            <a href="#planos" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg text-lg cta-button">Conheça Nossos Planos</a>
+        </div>
+    </section>
+
+    <!-- Planos de Aluguel Section -->
+    <section id="planos" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">Planos de Aluguel Fotovoltaico</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Plano 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <img src="https://placehold.co/300x200/a7f3d0/166534?text=Plano+Residencial" alt="Imagem do Plano Residencial" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.src='https://placehold.co/300x200/ef4444/ffffff?text=Erro+ao+carregar+imagem'">
+                    <h3 class="text-2xl font-bold text-green-600 mb-3">Plano Residencial Compacto</h3>
+                    <p class="text-gray-600 mb-4">Ideal para residências com consumo moderado. Economize na conta de luz com um sistema eficiente e compacto.</p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Painéis solares de alta eficiência</li>
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Instalação e manutenção inclusas</li>
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Monitoramento online</li>
+                    </ul>
+                    <p class="text-2xl font-bold text-gray-700 mb-1">A partir de <span class="text-green-500">R$ 299/mês</span></p>
+                    <a href="#contato" class="mt-6 inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg cta-button w-full text-center">Quero Saber Mais</a>
+                </div>
+
+                <!-- Plano 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <img src="https://placehold.co/300x200/6ee7b7/14532d?text=Plano+Comercial" alt="Imagem do Plano Comercial" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.src='https://placehold.co/300x200/ef4444/ffffff?text=Erro+ao+carregar+imagem'">
+                    <h3 class="text-2xl font-bold text-green-600 mb-3">Plano Comercial Eficiente</h3>
+                    <p class="text-gray-600 mb-4">Reduza os custos de energia do seu negócio. Soluções personalizadas para diferentes portes de empresa.</p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Projetos customizados</li>
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Suporte técnico especializado</li>
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Retorno rápido do investimento</li>
+                    </ul>
+                     <p class="text-2xl font-bold text-gray-700 mb-1">A partir de <span class="text-green-500">R$ 799/mês</span></p>
+                    <a href="#contato" class="mt-6 inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg cta-button w-full text-center">Consultar Especialista</a>
+                </div>
+
+                <!-- Plano 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <img src="https://placehold.co/300x200/34d399/052e16?text=Plano+Premium" alt="Imagem do Plano Premium" class="w-full h-48 object-cover rounded-md mb-6" onerror="this.src='https://placehold.co/300x200/ef4444/ffffff?text=Erro+ao+carregar+imagem'">
+                    <h3 class="text-2xl font-bold text-green-600 mb-3">Plano Premium Sustentável</h3>
+                    <p class="text-gray-600 mb-4">Para quem busca máxima performance e autonomia energética. Inclui as tecnologias mais avançadas do mercado.</p>
+                    <ul class="text-gray-600 space-y-2 mb-6">
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Tecnologia de ponta</li>
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Opção com baterias para backup</li>
+                        <li><span class="text-green-500 font-semibold">&#10003;</span> Atendimento VIP</li>
+                    </ul>
+                    <p class="text-2xl font-bold text-gray-700 mb-1">Sob <span class="text-green-500">Consulta</span></p>
+                    <a href="#contato" class="mt-6 inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg cta-button w-full text-center">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador Section -->
+    <section id="simulador" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">Simule Sua Economia</h2>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-xl">
+                <form id="simulationForm">
+                    <div class="mb-6">
+                        <label for="consumoMensal" class="block text-gray-700 font-semibold mb-2">Seu consumo médio mensal de energia (kWh):</label>
+                        <input type="number" id="consumoMensal" name="consumoMensal" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Ex: 300 kWh" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="valorConta" class="block text-gray-700 font-semibold mb-2">Ou o valor médio da sua conta de luz (R$):</label>
+                        <input type="number" id="valorConta" name="valorConta" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Ex: R$ 250">
+                         <p class="text-xs text-gray-500 mt-1">Preencha um dos campos acima. Se ambos forem preenchidos, o consumo (kWh) terá prioridade.</p>
+                    </div>
+                    <div class="mb-6">
+                        <label for="tipoTelhado" class="block text-gray-700 font-semibold mb-2">Tipo de Telhado:</label>
+                        <select id="tipoTelhado" name="tipoTelhado" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <option value="ceramico">Cerâmico</option>
+                            <option value="metalico">Metálico</option>
+                            <option value="fibrocimento">Fibrocimento</option>
+                            <option value="laje">Laje</option>
+                            <option value="outro">Outro / Não sei</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg cta-button text-lg">Simular Agora</button>
+                </form>
+                <div id="simulationResult" class="mt-8 hidden">
+                    <h3 class="text-2xl font-semibold text-green-600 mb-3">Resultado da Simulação (Estimativa):</h3>
+                    <p id="economiaEstimada" class="text-gray-700 text-lg mb-2"></p>
+                    <p id="sistemaRecomendado" class="text-gray-700 text-lg mb-2"></p>
+                    <p id="observacao" class="text-sm text-gray-500"></p>
+                    <a href="#contato" class="mt-4 inline-block text-green-600 hover:text-green-700 font-semibold">Fale com um especialista para um orçamento detalhado &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section id="contato" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title">Entre em Contato</h2>
+            <div class="max-w-lg mx-auto bg-gray-50 p-8 rounded-xl shadow-xl">
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label for="nome" class="block text-gray-700 font-semibold mb-2">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">E-mail:</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="telefone" class="block text-gray-700 font-semibold mb-2">Telefone (Opcional):</label>
+                        <input type="tel" id="telefone" name="telefone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div class="mb-6">
+                        <label for="mensagem" class="block text-gray-700 font-semibold mb-2">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg cta-button text-lg">Enviar Mensagem</button>
+                </form>
+            </div>
+             <div class="text-center mt-12">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Ou fale conosco diretamente:</h3>
+                <p class="text-gray-600"><strong>Telefone:</strong> (XX) XXXXX-XXXX</p>
+                <p class="text-gray-600"><strong>E-mail:</strong> contato@ecoenergy.com.br</p>
+                <p class="text-gray-600"><strong>Endereço:</strong> Rua da Energia Solar, 123, Cidade Verde - ES</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="currentYear"></span> EcoEnergy. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-400 mt-2">Promovendo um futuro mais verde e sustentável.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="formFeedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-button" onclick="closeModal('formFeedbackModal')">&times;</span>
+            <h3 id="modalTitle" class="text-xl font-semibold mb-3"></h3>
+            <p id="modalMessage" class="text-gray-700"></p>
+            <button onclick="closeModal('formFeedbackModal')" class="mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg cta-button">
+                OK
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // --- Modal Functions ---
+        function openModal(modalId, title, message) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMessage').textContent = message;
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('formFeedbackModal');
+            if (event.target == modal) {
+                closeModal('formFeedbackModal');
+            }
+        }
+        // --- End Modal Functions ---
+
+
+        // Simulation Logic
+        const simulationForm = document.getElementById('simulationForm');
+        const simulationResultDiv = document.getElementById('simulationResult');
+        const economiaEstimadaP = document.getElementById('economiaEstimada');
+        const sistemaRecomendadoP = document.getElementById('sistemaRecomendado');
+        const observacaoP = document.getElementById('observacao');
+
+        simulationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const consumoMensal = parseFloat(document.getElementById('consumoMensal').value);
+            const valorConta = parseFloat(document.getElementById('valorConta').value);
+            // const tipoTelhado = document.getElementById('tipoTelhado').value; // Not used in this basic calculation
+
+            let consumoBase = 0;
+            const TARIFA_MEDIA_ENERGIA = 0.85; // R$ por kWh - valor exemplo, pode variar muito!
+
+            if (consumoMensal && consumoMensal > 0) {
+                consumoBase = consumoMensal;
+            } else if (valorConta && valorConta > 0) {
+                consumoBase = valorConta / TARIFA_MEDIA_ENERGIA; // Estimativa de consumo a partir do valor
+            } else {
+                 openModal('formFeedbackModal', 'Erro na Simulação', 'Por favor, informe seu consumo mensal em kWh ou o valor da sua conta de luz.');
+                return;
+            }
+
+            if (consumoBase <= 0) {
+                openModal('formFeedbackModal', 'Erro na Simulação', 'O valor de consumo ou da conta deve ser positivo.');
+                return;
+            }
+            
+            // Lógica de simulação MUITO simplificada
+            // Em um cenário real, isso envolveria irradiação solar local, perdas do sistema, etc.
+            const geracaoMediaMensalPorKwp = 120; // kWh gerados por kWp de painel instalado (valor exemplo)
+            const sistemaNecessarioKwp = consumoBase / geracaoMediaMensalPorKwp;
+            
+            // Estimativa de economia (considerando que o aluguel cobre a geração)
+            // Supondo que o custo do aluguel seja 70-90% do valor da conta economizada
+            const percentualEconomiaMin = 0.15; // 15%
+            const percentualEconomiaMax = 0.35; // 35%
+            
+            const economiaMinReais = (consumoBase * TARIFA_MEDIA_ENERGIA) * percentualEconomiaMin;
+            const economiaMaxReais = (consumoBase * TARIFA_MEDIA_ENERGIA) * percentualEconomiaMax;
+
+            economiaEstimadaP.textContent = `Sua economia mensal estimada pode variar entre R$ ${economiaMinReais.toFixed(2)} e R$ ${economiaMaxReais.toFixed(2)}.`;
+            sistemaRecomendadoP.textContent = `Para atender seu consumo, um sistema de aproximadamente ${sistemaNecessarioKwp.toFixed(2)} kWp seria recomendado.`;
+            observacaoP.textContent = `Esta é uma simulação simplificada. O valor exato do aluguel e a economia real dependem de uma análise técnica detalhada do local de instalação e das condições contratuais. A tarifa média de R$${TARIFA_MEDIA_ENERGIA.toFixed(2)}/kWh foi usada como base de cálculo.`;
+            
+            simulationResultDiv.classList.remove('hidden');
+            simulationResultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Contact Form Logic
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value;
+            // Em um app real, aqui você enviaria os dados para um backend ou serviço de email.
+            // Por ora, apenas exibiremos uma mensagem de sucesso.
+            openModal('formFeedbackModal', 'Mensagem Enviada!', `Obrigado por entrar em contato, ${nome}! Responderemos em breve.`);
+            contactForm.reset(); // Limpa o formulário
+        });
+
+    </script>
+
+</body>
+</html>
